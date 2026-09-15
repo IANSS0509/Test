@@ -917,18 +917,18 @@
       box-shadow: 0 3px 10px rgba(66,73,83,.14), inset 0 1px 0 rgba(255,255,255,.8);
     }
     .nav-actions { display:flex; align-items:center; }
-    #btn-nav-contact{width:148px;min-width:148px;height:40px;text-align:center;padding:0 14px;white-space:nowrap;overflow:hidden;font-size:.76rem;letter-spacing:.045em;line-height:38px}
+    #btn-nav-contact{display:inline-flex;align-items:center;justify-content:center;width:160px;min-width:160px;height:40px;padding:0 12px;white-space:nowrap;overflow:hidden;text-overflow:clip;font-size:.72rem;letter-spacing:.035em;line-height:1}
     @media(max-width:560px){.btn-contact-nav{display:none}.language-switch{margin-right:0}.language-option{min-width:37px;padding:0 8px}}
 
     /* YL metallic monogram */
-    .yl-monogram{position:absolute;right:7%;bottom:9%;width:174px;height:136px;z-index:2;opacity:1;pointer-events:none;filter:drop-shadow(0 10px 18px rgba(55,62,72,.18))}
-    .yl-monogram span{position:absolute;display:block;background:linear-gradient(105deg,#f8f9fa 0%,#aeb4bc 25%,#555d67 55%,#dfe2e6 78%,#737a84 100%);box-shadow:inset 1px 0 0 rgba(255,255,255,.8),0 2px 5px rgba(55,62,72,.18)}
-    .yl-monogram .y-left{width:4px;height:74px;left:42px;top:0;transform:rotate(-34deg);transform-origin:bottom;border-radius:4px}
-    .yl-monogram .y-right{width:4px;height:74px;left:42px;top:0;transform:rotate(34deg);transform-origin:bottom;border-radius:4px}
-    .yl-monogram .y-stem{width:4px;height:68px;left:42px;bottom:0;border-radius:4px}
-    .yl-monogram .l-stem{width:4px;height:132px;right:43px;top:0;border-radius:4px}
-    .yl-monogram .l-base{width:62px;height:4px;right:-15px;bottom:3px;border-radius:4px}
-    .yl-monogram::after{content:"YURI LEE";position:absolute;right:-10px;bottom:-23px;color:#656c76;font-size:.68rem;font-weight:600;letter-spacing:.24em;white-space:nowrap}
+    .yl-monogram{position:absolute;right:7%;bottom:9%;width:190px;height:148px;z-index:2;opacity:1;pointer-events:none;filter:drop-shadow(0 12px 22px rgba(45,52,62,.25))}
+    .yl-monogram span{position:absolute;display:block;background:linear-gradient(105deg,#dfe2e6 0%,#8e959f 23%,#343b45 52%,#c8cdd3 76%,#59616c 100%);box-shadow:inset 1px 0 1px rgba(255,255,255,.9),1px 3px 8px rgba(48,55,65,.25)}
+    .yl-monogram .y-left{width:6px;height:80px;left:46px;top:0;transform:rotate(-34deg);transform-origin:bottom;border-radius:6px}
+    .yl-monogram .y-right{width:6px;height:80px;left:46px;top:0;transform:rotate(34deg);transform-origin:bottom;border-radius:6px}
+    .yl-monogram .y-stem{width:6px;height:74px;left:46px;bottom:0;border-radius:6px}
+    .yl-monogram .l-stem{width:6px;height:144px;right:46px;top:0;border-radius:6px}
+    .yl-monogram .l-base{width:68px;height:6px;right:-16px;bottom:3px;border-radius:6px}
+    .yl-monogram::after{content:"YURI LEE";position:absolute;right:-10px;bottom:-25px;color:#4d5560;font-size:.72rem;font-weight:700;letter-spacing:.22em;white-space:nowrap}
 
     /* Materials archive */
     .materials-section{background:#fff}
@@ -1322,7 +1322,7 @@
       '.project-card:nth-child(3) .card-title': '지속 가능한 천연 소재 연구',
       '.project-card:nth-child(3) .card-text': '천연 가공 나파 가죽과 책임감 있게 조달한 우드를 결합해 섬세한 촉각적 깊이를 연구했습니다.',
       '.project-card:nth-child(3) .tag-pill:nth-child(1)': '친환경 나파',
-      '.project-card:nth-child(3) .tag-pill:nth-child(2)': '리얼 우드',
+      '.project-card:nth-child(3) .tag-pill:nth-child(2)': '천연 우드',
       '.project-card:nth-child(3) .tag-pill:nth-child(3)': '지속 가능성',
       '#materials .section-eyebrow': '04 / 소재 아카이브',
       '#materials .section-title': '이유가 있는 소재.',
@@ -1340,7 +1340,7 @@
       '.closing-desc': '자동차 인테리어 콘셉트, CMF 개발, 차세대 HMI 인터랙션 협업을 환영합니다.',
       '#btn-footer-contact span': '대화 시작하기',
       '.footer-inner > div:first-child': '<strong>GENESIS × YURI LEE</strong> · 자동차 인테리어 아키텍처 & CMF',
-      '.footer-inner > div:last-child': '© 2026 Yuri Lee. 모든 권리 보유.'
+      '.footer-inner > div:last-child': '© 2026 Yuri Lee. 모든 권리는 이유리에게 있습니다.'
     };
 
     const englishCopy = {};
@@ -1371,7 +1371,7 @@
         option.classList.toggle('is-active', isActive);
         option.setAttribute('aria-pressed', String(isActive));
       });
-      document.getElementById('btn-nav-contact').textContent = selectedLanguage === 'ko' ? '상담 문의' : 'Consultation';
+      document.getElementById('btn-nav-contact').textContent = selectedLanguage === 'ko' ? '프로젝트 문의' : 'Consultation';
       localStorage.setItem('yuri-language', selectedLanguage);
       modeDetail.textContent = driveModes[modeIndex][selectedLanguage];
     }
