@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="제네시스 디자인 철학 기반의 미래지향적 자동차 실내 디자이너 이유리의 공식 포트폴리오입니다." />
-  <title>이유리 — Genesis Automotive Interior Designer</title>
+  <meta name="description" content="The official portfolio of Yuri Lee, a future-focused automotive interior designer." />
+  <title>Yuri Lee — Automotive Interior Designer</title>
 
   <!-- 단일 통일 서체: 프리텐다드 (Pretendard) -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -723,6 +723,23 @@
         padding-top: 130px;
       }
     }
+
+    /* White and silver redesign */
+    :root{--g-black:#fff;--g-deep:#f6f7f9;--g-surface:#fff;--g-card:#f3f4f6;--g-copper:#7f8690;--g-copper-soft:#626973;--g-copper-glow:rgba(120,128,140,.12);--g-white:#12151a;--g-silver:#2f343b;--g-body:#626973;--g-muted:#969ca5;--g-border:rgba(20,24,30,.1);--g-border-hover:rgba(77,85,96,.3)}
+    html,body,button,input,textarea,select{font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+    body{background:#fff;color:#2f343b;font-weight:300}
+    .nav{background:rgba(255,255,255,.84);border-bottom-color:rgba(20,24,30,.08);box-shadow:0 10px 35px rgba(22,28,36,.035)}
+    .brand,.hero h1,.section-title,.quote-lead,.pillar-title,.cockpit-toolbar h3,.mode-title,.stat-metric,.card-title,.closing-title,.author-name{font-weight:700;color:#12151a}
+    .role,.nav-links a,.hero-lead,.hero-sub,.section-intro,.quote-body,.pillar-desc,.cockpit-toolbar p,.mode-desc,.stat-label,.card-text,.closing-desc,.footer,.tag-pill{font-weight:300}
+    .hero{background:radial-gradient(circle at 76% 28%,rgba(179,185,194,.2),transparent 27%),linear-gradient(145deg,#fff 0%,#fff 54%,#f1f3f5 100%)}
+    .hero::after{content:"";position:absolute;width:min(48vw,660px);aspect-ratio:1;right:-9%;top:10%;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0 12%,#eef0f3 42%,#c7cbd1 70%,#f8f9fa 72%);box-shadow:inset -35px -28px 80px rgba(76,83,93,.11),0 60px 130px rgba(79,87,98,.1);pointer-events:none}.hero-content{position:relative;z-index:1}
+    .two-lines-icon span,.two-lines-divider span{background:linear-gradient(90deg,#656b74,#c7cbd1);box-shadow:none}.hero h1 .highlight-copper{color:#777e88;text-shadow:none}
+    .btn-contact-nav,.btn-genesis-outline{border-color:#cfd3d8;color:#353a42;background:rgba(255,255,255,.72);border-radius:12px}.btn-contact-nav:hover,.btn-genesis-outline:hover{background:#f0f2f4;color:#111318;border-color:#aeb4bc;box-shadow:none}
+    .btn-genesis-solid{background:#171a1f;border-color:#171a1f;color:#fff;border-radius:12px;box-shadow:0 10px 25px rgba(27,31,37,.12)}.btn-genesis-solid:hover{background:#363b43;box-shadow:0 14px 30px rgba(27,31,37,.16)}
+    section{border-top-color:rgba(20,24,30,.08)}.philosophy-quote-card,.pillar-item,.project-card{background:#fff;border-color:rgba(20,24,30,.09);border-radius:24px;box-shadow:0 16px 50px rgba(34,40,48,.055)}.pillar-item:hover,.project-card:hover{border-color:#c6cbd1;box-shadow:0 24px 60px rgba(34,40,48,.09)}
+    .cockpit-section{background:linear-gradient(180deg,#fafbfc,#f1f3f5)}.cockpit-box{background:rgba(255,255,255,.9);border-color:rgba(20,24,30,.09);border-radius:28px;box-shadow:0 28px 80px rgba(45,52,61,.1)}.cockpit-viewport{background:radial-gradient(circle at 50% 130%,#d8dce1,#f8f9fa 58%,#fff);border-color:rgba(20,24,30,.08);border-radius:18px}.viewport-top{color:#858b94}.ambient-glow-line{opacity:.65}.sphere-avatar{box-shadow:0 14px 35px rgba(45,52,61,.14)}
+    .tag-pill{background:#f3f4f6;border-color:#e1e4e8;color:#5f6670;border-radius:999px}.closing-section{background:radial-gradient(circle at 50% 100%,#dfe2e6 0%,#f6f7f8 42%,#fff 72%)}.footer{background:#f7f8f9}.toast{background:rgba(255,255,255,.95);border-color:#c8cdd3;color:#20242a;box-shadow:0 15px 40px rgba(31,37,45,.14)}
+    @media(max-width:860px){.hero::after{width:86vw;right:-42%;top:13%;opacity:.72}}
   </style>
 </head>
 <body>
@@ -741,10 +758,10 @@
 
       <nav>
         <ul class="nav-links">
-          <li><a href="#philosophy">공간 철학</a></li>
-          <li><a href="#cockpit">미래형 콕핏</a></li>
-          <li><a href="#projects">디자인 프로젝트</a></li>
-          <li><a href="#contact">문의하기</a></li>
+          <li><a href="#philosophy">Philosophy</a></li>
+          <li><a href="#cockpit">Future Cockpit</a></li>
+          <li><a href="#projects">Selected Work</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
@@ -766,25 +783,25 @@
           </div>
 
           <h1>
-            공간, 그 이상의 감동을 빚어내는<br />
-            자동차 실내 디자이너 <span class="highlight-copper">이유리</span>입니다.
+            Designing emotion<br />
+            beyond the space. <span class="highlight-copper">Yuri Lee</span>
           </h1>
 
           <p class="hero-lead">
-            한국 고유의 <strong>‘여백의 미’</strong>와 최첨단 모빌리티 테크놀로지가 만나는 지점.<br />
-            복잡함을 덜어내고, 승객의 오감을 온전히 감싸 안는 럭셔리 모빌리티 콕핏을 설계합니다.
+            Where the Korean <strong>beauty of white space</strong> meets advanced mobility technology.<br />
+            I remove complexity to create calm, intuitive and deeply human cockpit experiences.
           </p>
 
           <p class="hero-sub">
-            운전석은 더 이상 이동만을 위한 공간이 아닙니다.<br />
-            삶의 가장 편안한 쉼터이자, 영감을 길어 올리는 나만의 프라이빗 라운지를 지향합니다.
+            A cockpit is no longer simply a place for transportation.<br />
+            It can become a private lounge for comfort, reflection and inspiration.
           </p>
 
           <div class="hero-buttons">
             <a href="#cockpit" class="btn-genesis-solid">
-              <span>콕핏 쇼케이스 체험하기</span>
+              <span>Explore the Cockpit</span>
             </a>
-            <a href="#philosophy" class="btn-genesis-outline">디자인 철학 읽어보기</a>
+            <a href="#philosophy" class="btn-genesis-outline">Read the Philosophy</a>
           </div>
         </div>
       </div>
@@ -796,12 +813,12 @@
         <div class="section-header">
           <span class="section-eyebrow">01 / Design Philosophy</span>
           <h2 class="section-title">
-            여백의 미(Beauty of White Space)와<br />
-            하이테크의 조화로운 공존.
+            The beauty of white space,<br />
+            balanced with high technology.
           </h2>
           <p class="section-intro">
-            제네시스의 인테리어는 화려한 장식으로 시선을 끄는 대신,<br />
-            머무는 사람의 마음을 차분하게 가라앉히는 비움의 미학에서 출발합니다.
+            Rather than competing for attention with decoration,<br />
+            the interior begins with a sense of calm created through restraint.
           </p>
         </div>
 
@@ -814,18 +831,18 @@
             </div>
 
             <p class="quote-lead">
-              “진정한 럭셔리는 기술을 요란하게 과시하지 않습니다.<br />
-              사람의 손길과 시선이 닿는 모든 순간에 자연스럽게 스며드는 배려, 그것이 실내 디자인의 본질입니다.”
+              “True luxury never needs to announce its technology.<br />
+              It is the quiet consideration felt wherever the hand and eye naturally reach.”
             </p>
 
             <p class="quote-body">
-              시야를 방해하지 않는 수평형 레이아웃과 감각적인 앰비언트 라이팅으로<br />
-              운전자와 동승자 모두에게 탁 트인 개방감과 안락함을 동시에 선사합니다.
+              A low horizontal architecture and considered ambient lighting create<br />
+              an open, comfortable environment for both driver and passengers.
             </p>
 
             <div class="author-sign">
               <div>
-                <div class="author-name">이유리 (Yuri Lee)</div>
+                <div class="author-name">Yuri Lee</div>
                 <div class="author-title">Automotive Interior Architecture Designer</div>
               </div>
             </div>
@@ -835,25 +852,25 @@
           <div class="philosophy-pillars">
             <div class="pillar-item">
               <div class="pillar-index">PILLAR 01</div>
-              <h3 class="pillar-title">수평형 레이아웃과 비움의 공간</h3>
+              <h3 class="pillar-title">Horizontal Space and Restraint</h3>
               <p class="pillar-desc">
-                슬림하게 가로지르는 송풍구 라인과 얇은 디스플레이 베젤을 통해 시각적 긴장감을 없애고, 실내를 실제보다 더 넓고 고요하게 느끼도록 설계합니다.
+                Slim air vents and minimal display bezels remove visual tension, making the interior feel wider, quieter and more composed.
               </p>
             </div>
 
             <div class="pillar-item">
               <div class="pillar-index">PILLAR 02</div>
-              <h3 class="pillar-title">크리스탈 스피어 & 감성적 인터랙션</h3>
+              <h3 class="pillar-title">Crystal Sphere and Emotional Interaction</h3>
               <p class="pillar-desc">
-                시동이 꺼져 있을 때는 영롱한 조형 오브제로, 주행 시에는 회전하여 직관적인 전자식 변속계로 전환되는 제네시스만의 감성 햅틱을 구체화합니다.
+                At rest it is a sculptural object. In motion it rotates into an intuitive electronic controller, connecting tactile feedback with emotion.
               </p>
             </div>
 
             <div class="pillar-item">
               <div class="pillar-index">PILLAR 03</div>
-              <h3 class="pillar-title">자연을 닮은 지속 가능한 럭셔리 CMF</h3>
+              <h3 class="pillar-title">Sustainable Luxury Inspired by Nature</h3>
               <p class="pillar-desc">
-                친환경 올리브유 가공 나파 가죽, 유칼립투스 리얼 우드 가니시, 재생 한지 실크 니트 등 자연에서 얻은 소재로 촉각적인 깊이를 더합니다.
+                Olive-oil-treated Nappa leather, eucalyptus veneer and recycled Hanji textiles bring natural depth to every touchpoint.
               </p>
             </div>
           </div>
@@ -867,10 +884,10 @@
         <div class="section-header">
           <span class="section-eyebrow">02 / Futuristic Cockpit</span>
           <h2 class="section-title">
-            차세대 제네시스 콕핏 아키텍처.
+            A next-generation cockpit architecture.
           </h2>
           <p class="section-intro">
-            탑승자의 주행 모드와 감정에 따라 유기적으로 반응하는 미래형 실내 인터랙션을 직접 체험해 보세요.
+            Explore an interior that responds naturally to the passenger’s driving mode, context and mood.
           </p>
         </div>
 
@@ -878,15 +895,15 @@
           <div class="cockpit-toolbar">
             <div>
               <h3>Interactive Ambient Lighting Simulation</h3>
-              <p>실시간 실내 앰비언트 무드 조명을 선택하여 콕핏 분위기를 변경할 수 있습니다.</p>
+              <p>Select an ambient light to reshape the atmosphere of the cockpit in real time.</p>
             </div>
 
             <div class="ambient-controls">
               <span class="ambient-label">Ambient Mood :</span>
-              <button class="color-btn active" style="background: #c5a880;" data-color="#c5a880" data-name="제네시스 시그니처 코퍼 (Genesis Copper)" title="제네시스 코퍼"></button>
-              <button class="color-btn" style="background: #38bdf8;" data-color="#38bdf8" data-name="오션 일렉트릭 블루 (Oceanic Electric)" title="일렉트릭 블루"></button>
-              <button class="color-btn" style="background: #f43f5e;" data-color="#f43f5e" data-name="마그마 크림슨 (Magma Crimson)" title="마그마 크림슨"></button>
-              <button class="color-btn" style="background: #34d399;" data-color="#34d399" data-name="오로라 그린 (Aurora Green)" title="오로라 그린"></button>
+              <button class="color-btn active" style="background: #aeb4bc;" data-color="#aeb4bc" data-name="Signature Silver" title="Signature Silver"></button>
+              <button class="color-btn" style="background: #a7c7dc;" data-color="#a7c7dc" data-name="Ocean Mist" title="Ocean Mist"></button>
+              <button class="color-btn" style="background: #d5b7b7;" data-color="#d5b7b7" data-name="Soft Rose" title="Soft Rose"></button>
+              <button class="color-btn" style="background: #b8cec3;" data-color="#b8cec3" data-name="Sage Light" title="Sage Light"></button>
             </div>
           </div>
 
@@ -900,13 +917,13 @@
             </div>
 
             <div class="viewport-center">
-              <div class="sphere-avatar" id="sphere-btn" title="클릭하여 주행 모드를 변경하세요">
+              <div class="sphere-avatar" id="sphere-btn" title="Click to change the driving mode">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2">
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                 </svg>
               </div>
               <div class="mode-title" id="mode-name">CHAUFFEUR MODE</div>
-              <div class="mode-desc" id="mode-detail">최적의 휴식과 여백을 제공하는 프라이빗 라운지 세팅</div>
+              <div class="mode-desc" id="mode-detail">A private lounge setting designed for rest and spacious comfort</div>
             </div>
 
             <div class="viewport-bottom">
@@ -930,10 +947,10 @@
         <div class="section-header">
           <span class="section-eyebrow">03 / Selected Works</span>
           <h2 class="section-title">
-            이유리 디자이너의 실내 디자인 프로젝트.
+            Selected interior design projects by Yuri Lee.
           </h2>
           <p class="section-intro">
-            사람의 일상에 깊은 감동을 주는 차세대 콘셉트와 CMF 머티리얼 포트폴리오입니다.
+            Future-facing concepts and CMF explorations designed to bring meaningful emotion into everyday mobility.
           </p>
         </div>
 
@@ -942,15 +959,15 @@
           <article class="project-card">
             <div>
               <div class="card-meta">Concept Interior · 2026</div>
-              <h3 class="card-title">네오룬 라운지 콕핏 아키텍처</h3>
+              <h3 class="card-title">Neolun Lounge Cockpit Architecture</h3>
               <p class="card-text">
-                B필러를 없앤 코치 도어와 180도 회전하는 스위블링 시트로 차량 실내를 따뜻한 한옥의 대청마루 같은 환대의 공간으로 재해석했습니다.
+                Coach doors without a B-pillar and 180-degree swivel seats transform the cabin into a warm, welcoming space inspired by Korean architecture.
               </p>
             </div>
             <div class="tag-pills">
-              <span class="tag-pill">여백의 미</span>
-              <span class="tag-pill">복사열 난방</span>
-              <span class="tag-pill">가변형 시트</span>
+              <span class="tag-pill">White Space</span>
+              <span class="tag-pill">Radiant Heating</span>
+              <span class="tag-pill">Adaptive Seating</span>
             </div>
           </article>
 
@@ -958,15 +975,15 @@
           <article class="project-card">
             <div>
               <div class="card-meta">Interaction Design · 2025</div>
-              <h3 class="card-title">크리스탈 햅틱 인터페이스</h3>
+              <h3 class="card-title">Crystal Haptic Interface</h3>
               <p class="card-text">
-                주행 중에도 시선을 뺏기지 않고 촉각만으로 조작할 수 있는 직관적인 크리스탈 다이얼과 감성 피드백 알고리즘을 설계했습니다.
+                An intuitive crystal controller and tactile feedback system designed for confident operation without taking the driver’s eyes off the road.
               </p>
             </div>
             <div class="tag-pills">
-              <span class="tag-pill">크리스탈 스피어</span>
-              <span class="tag-pill">햅틱 터치</span>
-              <span class="tag-pill">휴먼 팩터</span>
+              <span class="tag-pill">Crystal Sphere</span>
+              <span class="tag-pill">Haptic Touch</span>
+              <span class="tag-pill">Human Factors</span>
             </div>
           </article>
 
@@ -974,15 +991,15 @@
           <article class="project-card">
             <div>
               <div class="card-meta">Sustainable CMF · 2025</div>
-              <h3 class="card-title">지속 가능한 천연 가니시 연구</h3>
+              <h3 class="card-title">Sustainable Natural Materials Study</h3>
               <p class="card-text">
-                올리브유 천연 추출물로 무두질한 나파 가죽과 친환경 목재 가니시가 만나 완성하는 촉각적 우아함을 연구하고 제품화했습니다.
+                A material study combining naturally treated Nappa leather with responsibly sourced wood to create refined tactile depth.
               </p>
             </div>
             <div class="tag-pills">
-              <span class="tag-pill">친환경 나파</span>
-              <span class="tag-pill">리얼 우드</span>
-              <span class="tag-pill">지속 가능성</span>
+              <span class="tag-pill">Eco Nappa</span>
+              <span class="tag-pill">Real Wood</span>
+              <span class="tag-pill">Sustainability</span>
             </div>
           </article>
         </div>
@@ -994,14 +1011,14 @@
       <div class="wrap">
         <span class="section-eyebrow">Collaborate With Yuri Lee</span>
         <h2 class="closing-title">
-          다음 세대의 모빌리티 경험을<br />
-          함께 빚어낼 준비가 되셨나요?
+          Ready to shape the next generation<br />
+          of mobility experiences?
         </h2>
         <p class="closing-desc">
-          자동차 실내 공간 콘셉트, CMF 머티리얼 개발, 차세대 HMI 인터랙션에 관한 협업을 언제나 환영합니다.
+          Open to collaborations in automotive interior concepts, CMF development and next-generation HMI interaction.
         </p>
         <button class="btn-genesis-solid" id="btn-footer-contact">
-          <span>이유리 디자이너와 상담하기</span>
+          <span>Start a Conversation</span>
         </button>
       </div>
     </section>
@@ -1021,7 +1038,7 @@
 
   <!-- 토스트 알림 메시지 -->
   <div class="toast" id="toast">
-    <span>✨ 알림 메시지</span>
+    <span>Notification</span>
   </div>
 
   <script>
@@ -1048,7 +1065,7 @@
         const name = btn.getAttribute('data-name');
         
         viewport.style.setProperty('--active-ambient', color);
-        showToast(`💡 실내 앰비언트 라이트가 [${name}]으로 변경되었습니다.`);
+        showToast(`Ambient lighting changed to ${name}.`);
       });
     });
 
@@ -1058,9 +1075,9 @@
     const modeDetail = document.getElementById('mode-detail');
 
     const driveModes = [
-      { name: 'CHAUFFEUR MODE', desc: '최적의 휴식과 여백을 제공하는 프라이빗 라운지 세팅' },
-      { name: 'DYNAMIC SPORT MODE', desc: '운전자 중심의 직관적 계기판과 빠른 햅틱 반응성 세팅' },
-      { name: 'AUTONOMOUS LOUNGE', desc: '스티어링 휠이 수납되고 180도 회전 시트가 활성화되는 자율주행 모드' }
+      { name: 'CHAUFFEUR MODE', desc: 'A private lounge setting designed for rest and spacious comfort' },
+      { name: 'DYNAMIC SPORT MODE', desc: 'A driver-focused interface with precise instruments and responsive haptics' },
+      { name: 'AUTONOMOUS LOUNGE', desc: 'A calm autonomous setting with a retracting wheel and rotating seats' }
     ];
     let modeIndex = 0;
 
@@ -1068,16 +1085,16 @@
       modeIndex = (modeIndex + 1) % driveModes.length;
       modeName.textContent = driveModes[modeIndex].name;
       modeDetail.textContent = driveModes[modeIndex].desc;
-      showToast(`🔄 주행 모드가 [${driveModes[modeIndex].name}]으로 전환되었습니다.`);
+      showToast(`Driving mode changed to ${driveModes[modeIndex].name}.`);
     });
 
     // 4. 문의 버튼 액션
     document.getElementById('btn-nav-contact').addEventListener('click', () => {
-      showToast('📩 이유리 디자이너와의 실내 디자인 컨설팅 문의 창구입니다.');
+      showToast('Contact Yuri Lee for an interior design consultation.');
     });
 
     document.getElementById('btn-footer-contact').addEventListener('click', () => {
-      showToast('📩 이유리 디자이너에게 협업 요청 메시지를 보냈습니다.');
+      showToast('Thank you for your interest in collaborating with Yuri Lee.');
     });
   </script>
 </body>
