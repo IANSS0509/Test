@@ -917,7 +917,32 @@
       box-shadow: 0 3px 10px rgba(66,73,83,.14), inset 0 1px 0 rgba(255,255,255,.8);
     }
     .nav-actions { display:flex; align-items:center; }
+    #btn-nav-contact{width:118px;min-width:118px;text-align:center;padding-left:8px;padding-right:8px;white-space:nowrap}
     @media(max-width:560px){.btn-contact-nav{display:none}.language-switch{margin-right:0}.language-option{min-width:37px;padding:0 8px}}
+
+    /* YL metallic monogram */
+    .yl-monogram{position:absolute;right:7%;bottom:9%;width:150px;height:116px;z-index:2;opacity:.78;pointer-events:none}
+    .yl-monogram span{position:absolute;display:block;background:var(--metal-gradient);box-shadow:0 7px 18px rgba(66,73,83,.12)}
+    .yl-monogram .y-left{width:2px;height:64px;left:35px;top:0;transform:rotate(-34deg);transform-origin:bottom}
+    .yl-monogram .y-right{width:2px;height:64px;left:35px;top:0;transform:rotate(34deg);transform-origin:bottom}
+    .yl-monogram .y-stem{width:2px;height:58px;left:35px;bottom:0}
+    .yl-monogram .l-stem{width:2px;height:112px;right:40px;top:0}
+    .yl-monogram .l-base{width:50px;height:2px;right:-8px;bottom:3px}
+    .yl-monogram::after{content:"YURI LEE";position:absolute;right:-4px;bottom:-20px;color:#858b94;font-size:.62rem;font-weight:500;letter-spacing:.24em}
+
+    /* Materials archive */
+    .materials-section{background:#fff}
+    .materials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .material-card{position:relative;min-height:390px;padding:0;border:1px solid rgba(20,24,30,.09);border-radius:26px;background:#fff;overflow:hidden;text-align:left;cursor:pointer;box-shadow:0 16px 50px rgba(34,40,48,.05);transition:transform .45s var(--g-ease),box-shadow .45s var(--g-ease)}
+    .material-card:hover{transform:translateY(-8px);box-shadow:0 28px 70px rgba(34,40,48,.1)}
+    .material-swatch{position:relative;height:205px;overflow:hidden;border-bottom:1px solid rgba(20,24,30,.08)}
+    .material-swatch::after{content:"";position:absolute;inset:-40%;background:linear-gradient(105deg,transparent 36%,rgba(255,255,255,.7) 49%,transparent 62%);transform:translateX(-70%) rotate(8deg);transition:transform .8s var(--g-ease)}
+    .material-card:hover .material-swatch::after{transform:translateX(70%) rotate(8deg)}
+    .swatch-metal{background:linear-gradient(118deg,#f9fafb 0%,#bcc2c9 23%,#f7f8f9 42%,#747b84 64%,#e9ebee 82%,#aeb4bb 100%)}
+    .swatch-leather{background:radial-gradient(circle at 20% 30%,rgba(255,255,255,.4) 0 1px,transparent 2px),radial-gradient(circle at 75% 65%,rgba(74,78,76,.18) 0 1px,transparent 2px),linear-gradient(135deg,#d8d8d2,#a9aba4);background-size:9px 9px,11px 11px,auto}
+    .swatch-wood{background:repeating-radial-gradient(ellipse at -10% 50%,transparent 0 13px,rgba(66,69,65,.11) 14px 16px,transparent 17px 29px),linear-gradient(110deg,#d2d0c9,#8c908d,#e0ded8)}
+    .material-copy{padding:26px 28px 28px}.material-index{display:block;margin-bottom:18px;color:#8e949d;font-size:.72rem;font-weight:500;letter-spacing:.14em}.material-copy h3{margin:0 0 10px;color:#15181d;font-size:1.28rem;font-weight:700}.material-copy p{margin:0;color:#747a83;font-size:.9rem;font-weight:300;line-height:1.7}.material-detail{max-height:0;overflow:hidden;color:#555b64;font-size:.82rem;font-weight:300;line-height:1.7;opacity:0;transition:max-height .45s var(--g-ease),opacity .35s ease,margin .35s ease}.material-card.is-open .material-detail{max-height:90px;margin-top:18px;opacity:1}.material-card.is-open{box-shadow:0 28px 70px rgba(34,40,48,.1)}
+    @media(max-width:860px){.materials-grid{grid-template-columns:1fr}.material-card{min-height:0}.yl-monogram{right:4%;bottom:7%;transform:scale(.78);transform-origin:right bottom}}
   </style>
 </head>
 <body>
@@ -959,6 +984,7 @@
   <main id="top">
     <!-- 메인 히어로 섹션 -->
     <section class="hero">
+      <div class="yl-monogram" aria-label="Yuri Lee monogram"><span class="y-left"></span><span class="y-right"></span><span class="y-stem"></span><span class="l-stem"></span><span class="l-base"></span></div>
       <div class="wrap">
         <div class="hero-content">
           <div class="hero-badge">
@@ -1193,6 +1219,30 @@
       </div>
     </section>
 
+    <section class="materials-section" id="materials">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="section-eyebrow">04 / Materials Archive</span>
+          <h2 class="section-title">Materials with a reason.</h2>
+          <p class="section-intro">A tactile library of finishes selected for atmosphere, longevity and responsible luxury.</p>
+        </div>
+        <div class="materials-grid">
+          <button class="material-card" type="button" aria-expanded="false">
+            <div class="material-swatch swatch-metal"></div>
+            <div class="material-copy"><span class="material-index">M-01 / METAL</span><h3>Satin Silver</h3><p>Cool precision with a soft, low-glare finish.</p><div class="material-detail">Use: controls and structural accents<br>Character: precise · calm · enduring</div></div>
+          </button>
+          <button class="material-card" type="button" aria-expanded="false">
+            <div class="material-swatch swatch-leather"></div>
+            <div class="material-copy"><span class="material-index">M-02 / LEATHER</span><h3>Olive Nappa</h3><p>A naturally treated surface with a quiet touch.</p><div class="material-detail">Use: seating and hand-contact zones<br>Character: soft · warm · responsible</div></div>
+          </button>
+          <button class="material-card" type="button" aria-expanded="false">
+            <div class="material-swatch swatch-wood"></div>
+            <div class="material-copy"><span class="material-index">M-03 / WOOD</span><h3>Eucalyptus Grain</h3><p>Organic rhythm balanced by architectural clarity.</p><div class="material-detail">Use: dashboard and door architecture<br>Character: natural · composed · tactile</div></div>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- 클로징 & 문의하기 -->
     <section class="closing-section" id="contact">
       <div class="wrap">
@@ -1274,6 +1324,18 @@
       '.project-card:nth-child(3) .tag-pill:nth-child(1)': '친환경 나파',
       '.project-card:nth-child(3) .tag-pill:nth-child(2)': '리얼 우드',
       '.project-card:nth-child(3) .tag-pill:nth-child(3)': '지속 가능성',
+      '#materials .section-eyebrow': '04 / 소재 아카이브',
+      '#materials .section-title': '이유가 있는 소재.',
+      '#materials .section-intro': '분위기와 내구성, 책임감 있는 럭셔리를 기준으로 선택한 촉각적 소재 라이브러리입니다.',
+      '.material-card:nth-child(1) h3': '새틴 실버',
+      '.material-card:nth-child(1) .material-copy > p': '눈부심을 줄인 부드러운 마감과 차가운 정밀함.',
+      '.material-card:nth-child(1) .material-detail': '적용: 컨트롤러 및 구조적 포인트<br>특성: 정밀함 · 차분함 · 지속성',
+      '.material-card:nth-child(2) h3': '올리브 나파',
+      '.material-card:nth-child(2) .material-copy > p': '자연 방식으로 가공한 조용하고 부드러운 표면.',
+      '.material-card:nth-child(2) .material-detail': '적용: 시트 및 손이 닿는 영역<br>특성: 부드러움 · 따뜻함 · 책임감',
+      '.material-card:nth-child(3) h3': '유칼립투스 그레인',
+      '.material-card:nth-child(3) .material-copy > p': '유기적인 리듬과 건축적인 명료함의 균형.',
+      '.material-card:nth-child(3) .material-detail': '적용: 대시보드 및 도어 아키텍처<br>특성: 자연스러움 · 절제 · 촉각성',
       '.closing-title': '다음 세대의 모빌리티 경험을<br>함께 만들어 볼까요?',
       '.closing-desc': '자동차 인테리어 콘셉트, CMF 개발, 차세대 HMI 인터랙션 협업을 환영합니다.',
       '#btn-footer-contact span': '대화 시작하기',
@@ -1391,6 +1453,7 @@
       ...document.querySelectorAll('.philosophy-quote-card, .pillar-item'),
       ...document.querySelectorAll('.cockpit-box'),
       ...document.querySelectorAll('.project-card'),
+      ...document.querySelectorAll('.material-card'),
       ...document.querySelectorAll('.closing-section > .wrap')
     ];
 
@@ -1398,7 +1461,7 @@
       element.classList.add('motion-reveal');
       const siblings = element.parentElement
         ? [...element.parentElement.children].filter((item) =>
-            item.matches('.pillar-item, .project-card')
+            item.matches('.pillar-item, .project-card, .material-card')
           )
         : [];
       const siblingIndex = siblings.indexOf(element);
@@ -1421,6 +1484,20 @@
 
       motionTargets.forEach((element) => revealObserver.observe(element));
     }
+
+    document.querySelectorAll('.material-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        const willOpen = !card.classList.contains('is-open');
+        document.querySelectorAll('.material-card').forEach((item) => {
+          item.classList.remove('is-open');
+          item.setAttribute('aria-expanded', 'false');
+        });
+        if (willOpen) {
+          card.classList.add('is-open');
+          card.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
 
     // Subtle metallic cursor for precise pointer devices
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
