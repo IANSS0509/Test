@@ -943,6 +943,23 @@
     .swatch-wood{background:repeating-radial-gradient(ellipse at -10% 50%,transparent 0 13px,rgba(66,69,65,.11) 14px 16px,transparent 17px 29px),linear-gradient(110deg,#d2d0c9,#8c908d,#e0ded8)}
     .material-copy{padding:26px 28px 28px}.material-index{display:block;margin-bottom:18px;color:#8e949d;font-size:.72rem;font-weight:500;letter-spacing:.14em}.material-copy h3{margin:0 0 10px;color:#15181d;font-size:1.28rem;font-weight:700}.material-copy p{margin:0;color:#747a83;font-size:.9rem;font-weight:300;line-height:1.7}.material-detail{max-height:0;overflow:hidden;color:#555b64;font-size:.82rem;font-weight:300;line-height:1.7;opacity:0;transition:max-height .45s var(--g-ease),opacity .35s ease,margin .35s ease}.material-card.is-open .material-detail{max-height:90px;margin-top:18px;opacity:1}.material-card.is-open{box-shadow:0 28px 70px rgba(34,40,48,.1)}
     @media(max-width:860px){.materials-grid{grid-template-columns:1fr}.material-card{min-height:0}.yl-monogram{right:4%;bottom:7%;transform:scale(.78);transform-origin:right bottom}}
+
+    /* CMF case study: additive section, no generated imagery */
+    .cmf-study{background:#f5f6f7}
+    .cmf-board{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}
+    .cmf-hero-panel,.cmf-info-panel,.cmf-detail-card{border:1px solid rgba(20,24,30,.09);border-radius:26px;background:#fff;overflow:hidden;box-shadow:0 16px 50px rgba(34,40,48,.045)}
+    .cmf-hero-panel{min-height:520px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+    .cmf-label{font-size:.7rem;font-weight:500;letter-spacing:.16em;color:#858c95;text-transform:uppercase}
+    .cmf-composition{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;height:325px;margin:28px 0}
+    .cmf-surface{position:relative;border-radius:18px;overflow:hidden}
+    .cmf-surface::after{content:"";position:absolute;inset:-50%;background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.58) 50%,transparent 62%);transform:translateX(-55%) rotate(10deg);transition:transform 1s var(--g-ease)}
+    .cmf-hero-panel:hover .cmf-surface::after{transform:translateX(55%) rotate(10deg)}
+    .cmf-main-leather{background:radial-gradient(circle at 20% 35%,rgba(255,255,255,.5) 0 1px,transparent 1.5px),radial-gradient(circle at 70% 60%,rgba(45,48,45,.15) 0 1px,transparent 1.6px),linear-gradient(145deg,#d7d8d2,#a6aaa2);background-size:8px 8px,11px 11px,auto}
+    .cmf-side-stack{display:grid;grid-template-rows:1fr 1fr;gap:12px}.cmf-metal{background:linear-gradient(115deg,#fafafa,#b9bfc6 28%,#f4f5f6 50%,#737a84 72%,#e9ebed)}.cmf-wood{background:repeating-radial-gradient(ellipse at -5% 55%,transparent 0 12px,rgba(55,59,56,.12) 13px 15px,transparent 16px 27px),linear-gradient(120deg,#d6d4cd,#929691,#e4e2dc)}
+    .cmf-palette{display:flex;align-items:center;gap:10px}.cmf-chip{width:34px;height:34px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px rgba(20,24,30,.1)}.cmf-chip:nth-child(1){background:#b4b8af}.cmf-chip:nth-child(2){background:#747b84}.cmf-chip:nth-child(3){background:#d7d6d0}.cmf-chip:nth-child(4){background:#2e3339}.cmf-code{margin-left:8px;color:#858b94;font-size:.73rem;font-weight:300;letter-spacing:.06em}
+    .cmf-info-panel{padding:34px;display:flex;flex-direction:column}.cmf-info-panel h3{font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.08;letter-spacing:-.04em;margin:44px 0 18px;color:#171a1f;font-weight:700}.cmf-info-panel>p{margin:0;color:#6b717a;font-size:.94rem;font-weight:300;line-height:1.75}.cmf-specs{margin-top:auto;border-top:1px solid #e3e5e8}.cmf-spec{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:17px 0;border-bottom:1px solid #e3e5e8;font-size:.78rem}.cmf-spec span{color:#9298a1;font-weight:300}.cmf-spec strong{color:#363c44;font-weight:600}
+    .cmf-detail-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.cmf-detail-card{padding:26px;min-height:190px}.cmf-detail-card .detail-line{height:2px;width:54px;margin:45px 0 22px;background:var(--metal-gradient)}.cmf-detail-card h4{margin:0 0 8px;color:#20242a;font-size:1.05rem;font-weight:700}.cmf-detail-card p{margin:0;color:#7a8089;font-size:.84rem;font-weight:300;line-height:1.65}
+    @media(max-width:860px){.cmf-board{grid-template-columns:1fr}.cmf-hero-panel{min-height:440px}.cmf-detail-grid{grid-template-columns:1fr}.cmf-composition{height:250px}.cmf-info-panel h3{margin-top:30px}.cmf-specs{margin-top:35px}}
   </style>
 </head>
 <body>
@@ -1243,6 +1260,37 @@
       </div>
     </section>
 
+    <section class="cmf-study" id="cmf-study">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="section-eyebrow">05 / CMF Case Study</span>
+          <h2 class="section-title">Quiet Tactility.</h2>
+          <p class="section-intro">A complete color, material and finish direction for a calm next-generation mobility lounge.</p>
+        </div>
+        <div class="cmf-board">
+          <article class="cmf-hero-panel">
+            <span class="cmf-label">Concept Board / 01</span>
+            <div class="cmf-composition" aria-label="Olive leather, satin silver and eucalyptus material composition">
+              <div class="cmf-surface cmf-main-leather"></div>
+              <div class="cmf-side-stack"><div class="cmf-surface cmf-metal"></div><div class="cmf-surface cmf-wood"></div></div>
+            </div>
+            <div class="cmf-palette"><span class="cmf-chip"></span><span class="cmf-chip"></span><span class="cmf-chip"></span><span class="cmf-chip"></span><span class="cmf-code">OLIVE 42 · SILVER 18 · WOOD 24 · INK 16</span></div>
+          </article>
+          <aside class="cmf-info-panel">
+            <span class="cmf-label">Design Direction</span>
+            <h3>Soft precision,<br>rooted in nature.</h3>
+            <p>A restrained palette balances tactile warmth with technical clarity. Every finish is selected to age quietly and remain comfortable in daily use.</p>
+            <div class="cmf-specs"><div class="cmf-spec"><span>Atmosphere</span><strong>Calm · Spacious</strong></div><div class="cmf-spec"><span>Application</span><strong>Seat · Console · Door</strong></div><div class="cmf-spec"><span>Priority</span><strong>Low glare · Longevity</strong></div></div>
+          </aside>
+          <div class="cmf-detail-grid">
+            <article class="cmf-detail-card"><span class="cmf-label">Detail 01</span><div class="detail-line"></div><h4>Touch</h4><p>Soft grain and low-friction surfaces support the areas passengers reach most often.</p></article>
+            <article class="cmf-detail-card"><span class="cmf-label">Detail 02</span><div class="detail-line"></div><h4>Light</h4><p>Satin finishes diffuse highlights to preserve visual comfort throughout the cabin.</p></article>
+            <article class="cmf-detail-card"><span class="cmf-label">Detail 03</span><div class="detail-line"></div><h4>Responsibility</h4><p>Natural treatments and durable materials reduce unnecessary replacement over time.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 클로징 & 문의하기 -->
     <section class="closing-section" id="contact">
       <div class="wrap">
@@ -1336,6 +1384,28 @@
       '.material-card:nth-child(3) h3': '유칼립투스 그레인',
       '.material-card:nth-child(3) .material-copy > p': '유기적인 리듬과 건축적인 명료함의 균형.',
       '.material-card:nth-child(3) .material-detail': '적용: 대시보드 및 도어 아키텍처<br>특성: 자연스러움 · 절제 · 촉각성',
+      '#cmf-study .section-eyebrow': '05 / CMF 케이스 스터디',
+      '#cmf-study .section-title': '차분한 촉감.',
+      '#cmf-study .section-intro': '차세대 모빌리티 라운지를 위해 완성한 차분한 컬러, 소재, 마감 방향입니다.',
+      '.cmf-hero-panel > .cmf-label': '콘셉트 보드 / 01',
+      '.cmf-info-panel > .cmf-label': '디자인 방향',
+      '.cmf-info-panel h3': '자연에 뿌리를 둔<br>부드러운 정밀함.',
+      '.cmf-info-panel > p': '절제된 팔레트로 촉각적인 따뜻함과 기술적인 명료함의 균형을 잡았습니다. 모든 마감은 자연스럽게 변화하며 일상에서 편안하게 사용할 수 있도록 선택했습니다.',
+      '.cmf-spec:nth-child(1) span': '분위기',
+      '.cmf-spec:nth-child(1) strong': '차분함 · 개방감',
+      '.cmf-spec:nth-child(2) span': '적용 부위',
+      '.cmf-spec:nth-child(2) strong': '시트 · 콘솔 · 도어',
+      '.cmf-spec:nth-child(3) span': '핵심 기준',
+      '.cmf-spec:nth-child(3) strong': '저광택 · 내구성',
+      '.cmf-detail-card:nth-child(1) .cmf-label': '디테일 01',
+      '.cmf-detail-card:nth-child(1) h4': '촉감',
+      '.cmf-detail-card:nth-child(1) p': '부드러운 그레인과 마찰을 줄인 표면으로 손이 자주 닿는 영역을 편안하게 설계했습니다.',
+      '.cmf-detail-card:nth-child(2) .cmf-label': '디테일 02',
+      '.cmf-detail-card:nth-child(2) h4': '빛',
+      '.cmf-detail-card:nth-child(2) p': '새틴 마감이 강한 반사를 부드럽게 확산해 실내의 시각적 편안함을 유지합니다.',
+      '.cmf-detail-card:nth-child(3) .cmf-label': '디테일 03',
+      '.cmf-detail-card:nth-child(3) h4': '책임감',
+      '.cmf-detail-card:nth-child(3) p': '자연 가공 방식과 내구성 높은 소재를 사용해 불필요한 교체를 줄였습니다.',
       '.closing-title': '다음 세대의 모빌리티 경험을<br>함께 만들어 볼까요?',
       '.closing-desc': '자동차 인테리어 콘셉트, CMF 개발, 차세대 HMI 인터랙션 협업을 환영합니다.',
       '#btn-footer-contact span': '대화 시작하기',
@@ -1447,6 +1517,7 @@
       ...document.querySelectorAll('.cockpit-box'),
       ...document.querySelectorAll('.project-card'),
       ...document.querySelectorAll('.material-card'),
+      ...document.querySelectorAll('.cmf-hero-panel, .cmf-info-panel, .cmf-detail-card'),
       ...document.querySelectorAll('.closing-section > .wrap')
     ];
 
@@ -1454,7 +1525,7 @@
       element.classList.add('motion-reveal');
       const siblings = element.parentElement
         ? [...element.parentElement.children].filter((item) =>
-            item.matches('.pillar-item, .project-card, .material-card')
+            item.matches('.pillar-item, .project-card, .material-card, .cmf-detail-card')
           )
         : [];
       const siblingIndex = siblings.indexOf(element);
