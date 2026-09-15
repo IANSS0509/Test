@@ -740,6 +740,51 @@
     .cockpit-section{background:linear-gradient(180deg,#fafbfc,#f1f3f5)}.cockpit-box{background:rgba(255,255,255,.9);border-color:rgba(20,24,30,.09);border-radius:28px;box-shadow:0 28px 80px rgba(45,52,61,.1)}.cockpit-viewport{background:radial-gradient(circle at 50% 130%,#d8dce1,#f8f9fa 58%,#fff);border-color:rgba(20,24,30,.08);border-radius:18px}.viewport-top{color:#858b94}.ambient-glow-line{opacity:.65}.sphere-avatar{box-shadow:0 14px 35px rgba(45,52,61,.14)}
     .tag-pill{background:#f3f4f6;border-color:#e1e4e8;color:#5f6670;border-radius:999px}.closing-section{background:radial-gradient(circle at 50% 100%,#dfe2e6 0%,#f6f7f8 42%,#fff 72%)}.footer{background:#f7f8f9}.toast{background:rgba(255,255,255,.95);border-color:#c8cdd3;color:#20242a;box-shadow:0 15px 40px rgba(31,37,45,.14)}
     @media(max-width:860px){.hero::after{width:86vw;right:-42%;top:13%;opacity:.72}}
+
+    /* Ordered entrance motion */
+    section[id] { scroll-margin-top: 72px; }
+
+    .hero .hero-badge,
+    .hero h1,
+    .hero .hero-lead,
+    .hero .hero-sub,
+    .hero .hero-buttons {
+      opacity: 0;
+      transform: translateY(28px);
+      filter: blur(7px);
+      animation: heroFadeUp .9s var(--g-ease) forwards;
+    }
+
+    .hero h1 { animation-delay: .12s; }
+    .hero .hero-lead { animation-delay: .24s; }
+    .hero .hero-sub { animation-delay: .34s; }
+    .hero .hero-buttons { animation-delay: .44s; }
+
+    .motion-reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      filter: blur(6px);
+      transition:
+        opacity .8s var(--g-ease),
+        transform .8s var(--g-ease),
+        filter .8s var(--g-ease);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .motion-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    @keyframes heroFadeUp {
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero .hero-badge,.hero h1,.hero .hero-lead,.hero .hero-sub,.hero .hero-buttons,
+      .motion-reveal { opacity: 1; transform: none; filter: none; animation: none; transition: none; }
+    }
   </style>
 </head>
 <body>
@@ -1096,6 +1141,43 @@
     document.getElementById('btn-footer-contact').addEventListener('click', () => {
       showToast('Thank you for your interest in collaborating with Yuri Lee.');
     });
+
+    // Ordered section entrance motion
+    const motionTargets = [
+      ...document.querySelectorAll('.section-header'),
+      ...document.querySelectorAll('.philosophy-quote-card, .pillar-item'),
+      ...document.querySelectorAll('.cockpit-box'),
+      ...document.querySelectorAll('.project-card'),
+      ...document.querySelectorAll('.closing-section > .wrap')
+    ];
+
+    motionTargets.forEach((element) => {
+      element.classList.add('motion-reveal');
+      const siblings = element.parentElement
+        ? [...element.parentElement.children].filter((item) =>
+            item.matches('.pillar-item, .project-card')
+          )
+        : [];
+      const siblingIndex = siblings.indexOf(element);
+      if (siblingIndex >= 0) {
+        element.style.setProperty('--reveal-delay', `${siblingIndex * 110}ms`);
+      }
+    });
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      motionTargets.forEach((element) => element.classList.add('is-visible'));
+    } else {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
+
+      motionTargets.forEach((element) => revealObserver.observe(element));
+    }
   </script>
 </body>
 </html>
