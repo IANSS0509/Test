@@ -885,23 +885,39 @@
       body.has-metal-cursor,body.has-metal-cursor a,body.has-metal-cursor button,body.has-metal-cursor .sphere-avatar { cursor: auto; }
     }
 
-    .language-toggle {
-      min-width: 58px;
+    .language-switch {
+      display: inline-flex;
+      align-items: center;
       height: 38px;
-      margin-left: 10px;
+      margin-right: 12px;
+      padding: 3px;
       border: 1px solid #d8dce1;
       border-radius: 12px;
       background: rgba(255,255,255,.76);
-      color: #30353c;
-      font-size: .76rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      cursor: pointer;
-      transition: background .25s ease, border-color .25s ease, transform .25s ease;
+      box-shadow: 0 5px 16px rgba(42,48,57,.05);
     }
-    .language-toggle:hover { background:#eef0f2; border-color:#aeb4bc; transform:translateY(-1px); }
+    .language-option {
+      min-width: 40px;
+      height: 30px;
+      padding: 0 10px;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      color: #9298a1;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      cursor: pointer;
+      transition: color .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+    .language-option:hover { color:#343941; }
+    .language-option.is-active {
+      color: #20242a;
+      background: linear-gradient(110deg,#fff 0%,#c8cdd3 38%,#eceef1 72%,#fff 100%);
+      box-shadow: 0 3px 10px rgba(66,73,83,.14), inset 0 1px 0 rgba(255,255,255,.8);
+    }
     .nav-actions { display:flex; align-items:center; }
-    @media(max-width:560px){.btn-contact-nav{display:none}.language-toggle{margin-left:0}}
+    @media(max-width:560px){.btn-contact-nav{display:none}.language-switch{margin-right:0}.language-option{min-width:37px;padding:0 8px}}
   </style>
 </head>
 <body>
@@ -931,8 +947,11 @@
       </nav>
 
       <div class="nav-actions">
+        <div class="language-switch" role="group" aria-label="Language selection">
+          <button class="language-option is-active" type="button" data-language="en" aria-pressed="true">EN</button>
+          <button class="language-option" type="button" data-language="ko" aria-pressed="false">KR</button>
+        </div>
         <button class="btn-contact-nav" id="btn-nav-contact">Consultation</button>
-        <button class="language-toggle" id="language-toggle" type="button" aria-label="한국어로 변경">KR</button>
       </div>
     </div>
   </header>
@@ -1270,15 +1289,17 @@
       document.querySelectorAll('.nav-links a').forEach((link, index) => {
         link.textContent = navCopy[language][index];
       });
-      const toggle = document.getElementById('language-toggle');
-      toggle.textContent = language === 'en' ? 'KR' : 'EN';
-      toggle.setAttribute('aria-label', language === 'en' ? '한국어로 변경' : 'Switch to English');
+      document.querySelectorAll('.language-option').forEach((option) => {
+        const isActive = option.dataset.language === language;
+        option.classList.toggle('is-active', isActive);
+        option.setAttribute('aria-pressed', String(isActive));
+      });
       document.getElementById('btn-nav-contact').textContent = language === 'ko' ? '상담 문의' : 'Consultation';
       localStorage.setItem('yuri-language', language);
     }
 
-    document.getElementById('language-toggle').addEventListener('click', () => {
-      setLanguage(currentLanguage === 'en' ? 'ko' : 'en');
+    document.querySelectorAll('.language-option').forEach((option) => {
+      option.addEventListener('click', () => setLanguage(option.dataset.language));
     });
 
     setLanguage(currentLanguage);
