@@ -917,7 +917,7 @@
       box-shadow: 0 3px 10px rgba(66,73,83,.14), inset 0 1px 0 rgba(255,255,255,.8);
     }
     .nav-actions { display:flex; align-items:center; }
-    #btn-nav-contact{display:inline-flex;align-items:center;justify-content:center;width:160px;min-width:160px;height:40px;padding:0 12px;white-space:nowrap;overflow:hidden;text-overflow:clip;font-size:.72rem;letter-spacing:.035em;line-height:1}
+    #btn-nav-contact{display:inline-flex;align-items:center;justify-content:center;width:96px;min-width:96px;height:40px;padding:0 10px;white-space:nowrap;overflow:hidden;font-size:.72rem;letter-spacing:.035em;line-height:1}
     @media(max-width:560px){.btn-contact-nav{display:none}.language-switch{margin-right:0}.language-option{min-width:37px;padding:0 8px}}
 
     /* YL metallic monogram */
@@ -973,10 +973,10 @@
 
       <div class="nav-actions">
         <div class="language-switch" role="group" aria-label="Language selection">
-          <button class="language-option is-active" type="button" data-language="en" aria-pressed="true">EN</button>
-          <button class="language-option" type="button" data-language="ko" aria-pressed="false">KR</button>
+          <button class="language-option is-active" type="button" data-language="en" aria-pressed="true" onclick="setLanguage('en')">EN</button>
+          <button class="language-option" type="button" data-language="ko" aria-pressed="false" onclick="setLanguage('ko')">KR</button>
         </div>
-        <button class="btn-contact-nav" id="btn-nav-contact">Consultation</button>
+        <button class="btn-contact-nav" id="btn-nav-contact">Contact</button>
       </div>
     </div>
   </header>
@@ -1279,7 +1279,7 @@
   </div>
 
   <script>
-    let currentLanguage = localStorage.getItem('yuri-language') || 'en';
+    let currentLanguage = 'en';
 
     const koreanCopy = {
       '.hero-badge > span:last-child': '제네시스 인테리어 철학',
@@ -1371,16 +1371,9 @@
         option.classList.toggle('is-active', isActive);
         option.setAttribute('aria-pressed', String(isActive));
       });
-      document.getElementById('btn-nav-contact').textContent = selectedLanguage === 'ko' ? '프로젝트 문의' : 'Consultation';
-      localStorage.setItem('yuri-language', selectedLanguage);
+      document.getElementById('btn-nav-contact').textContent = selectedLanguage === 'ko' ? '문의하기' : 'Contact';
       modeDetail.textContent = driveModes[modeIndex][selectedLanguage];
     }
-
-    document.querySelectorAll('.language-option').forEach((option) => {
-      option.addEventListener('click', () => {
-        setLanguage(option.getAttribute('data-language'));
-      });
-    });
 
     // 1. 토스트 알림 함수
     const toast = document.getElementById('toast');
