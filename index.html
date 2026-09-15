@@ -917,18 +917,18 @@
       box-shadow: 0 3px 10px rgba(66,73,83,.14), inset 0 1px 0 rgba(255,255,255,.8);
     }
     .nav-actions { display:flex; align-items:center; }
-    #btn-nav-contact{width:118px;min-width:118px;text-align:center;padding-left:8px;padding-right:8px;white-space:nowrap}
+    #btn-nav-contact{width:148px;min-width:148px;height:40px;text-align:center;padding:0 14px;white-space:nowrap;overflow:hidden;font-size:.76rem;letter-spacing:.045em;line-height:38px}
     @media(max-width:560px){.btn-contact-nav{display:none}.language-switch{margin-right:0}.language-option{min-width:37px;padding:0 8px}}
 
     /* YL metallic monogram */
-    .yl-monogram{position:absolute;right:7%;bottom:9%;width:150px;height:116px;z-index:2;opacity:.78;pointer-events:none}
-    .yl-monogram span{position:absolute;display:block;background:var(--metal-gradient);box-shadow:0 7px 18px rgba(66,73,83,.12)}
-    .yl-monogram .y-left{width:2px;height:64px;left:35px;top:0;transform:rotate(-34deg);transform-origin:bottom}
-    .yl-monogram .y-right{width:2px;height:64px;left:35px;top:0;transform:rotate(34deg);transform-origin:bottom}
-    .yl-monogram .y-stem{width:2px;height:58px;left:35px;bottom:0}
-    .yl-monogram .l-stem{width:2px;height:112px;right:40px;top:0}
-    .yl-monogram .l-base{width:50px;height:2px;right:-8px;bottom:3px}
-    .yl-monogram::after{content:"YURI LEE";position:absolute;right:-4px;bottom:-20px;color:#858b94;font-size:.62rem;font-weight:500;letter-spacing:.24em}
+    .yl-monogram{position:absolute;right:7%;bottom:9%;width:174px;height:136px;z-index:2;opacity:1;pointer-events:none;filter:drop-shadow(0 10px 18px rgba(55,62,72,.18))}
+    .yl-monogram span{position:absolute;display:block;background:linear-gradient(105deg,#f8f9fa 0%,#aeb4bc 25%,#555d67 55%,#dfe2e6 78%,#737a84 100%);box-shadow:inset 1px 0 0 rgba(255,255,255,.8),0 2px 5px rgba(55,62,72,.18)}
+    .yl-monogram .y-left{width:4px;height:74px;left:42px;top:0;transform:rotate(-34deg);transform-origin:bottom;border-radius:4px}
+    .yl-monogram .y-right{width:4px;height:74px;left:42px;top:0;transform:rotate(34deg);transform-origin:bottom;border-radius:4px}
+    .yl-monogram .y-stem{width:4px;height:68px;left:42px;bottom:0;border-radius:4px}
+    .yl-monogram .l-stem{width:4px;height:132px;right:43px;top:0;border-radius:4px}
+    .yl-monogram .l-base{width:62px;height:4px;right:-15px;bottom:3px;border-radius:4px}
+    .yl-monogram::after{content:"YURI LEE";position:absolute;right:-10px;bottom:-23px;color:#656c76;font-size:.68rem;font-weight:600;letter-spacing:.24em;white-space:nowrap}
 
     /* Materials archive */
     .materials-section{background:#fff}
