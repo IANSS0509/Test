@@ -1253,18 +1253,32 @@
       '#cockpit .section-title': '차세대 콕핏 아키텍처.',
       '#cockpit .section-intro': '주행 모드와 상황, 탑승자의 감정에 자연스럽게 반응하는 미래형 실내를 경험해 보세요.',
       '.cockpit-toolbar p': '앰비언트 조명을 선택해 실시간으로 콕핏의 분위기를 바꿔보세요.',
+      '.ambient-label': '앰비언트 무드 :',
+      '.stat-label': '파노라믹 OLED 디스플레이',
+      '.viewport-bottom > div:last-child .stat-label': '지속 가능한 럭셔리 소재',
       '#projects .section-eyebrow': '03 / 주요 프로젝트',
       '#projects .section-title': '이유리의 인테리어 디자인 프로젝트.',
       '#projects .section-intro': '일상의 모빌리티에 의미 있는 감성을 더하는 미래형 콘셉트와 CMF 연구입니다.',
       '.project-card:nth-child(1) .card-title': '네오룬 라운지 콕핏 아키텍처',
       '.project-card:nth-child(1) .card-text': 'B필러가 없는 코치 도어와 180도 회전 시트로 한국 건축에서 영감을 받은 따뜻한 환대의 공간을 완성했습니다.',
+      '.project-card:nth-child(1) .tag-pill:nth-child(1)': '여백의 미',
+      '.project-card:nth-child(1) .tag-pill:nth-child(2)': '복사열 난방',
+      '.project-card:nth-child(1) .tag-pill:nth-child(3)': '가변형 시트',
       '.project-card:nth-child(2) .card-title': '크리스탈 햅틱 인터페이스',
       '.project-card:nth-child(2) .card-text': '운전자의 시선을 빼앗지 않고도 정확하게 조작할 수 있는 크리스탈 컨트롤러와 촉각 피드백 시스템입니다.',
+      '.project-card:nth-child(2) .tag-pill:nth-child(1)': '크리스탈 스피어',
+      '.project-card:nth-child(2) .tag-pill:nth-child(2)': '햅틱 터치',
+      '.project-card:nth-child(2) .tag-pill:nth-child(3)': '휴먼 팩터',
       '.project-card:nth-child(3) .card-title': '지속 가능한 천연 소재 연구',
       '.project-card:nth-child(3) .card-text': '천연 가공 나파 가죽과 책임감 있게 조달한 우드를 결합해 섬세한 촉각적 깊이를 연구했습니다.',
+      '.project-card:nth-child(3) .tag-pill:nth-child(1)': '친환경 나파',
+      '.project-card:nth-child(3) .tag-pill:nth-child(2)': '리얼 우드',
+      '.project-card:nth-child(3) .tag-pill:nth-child(3)': '지속 가능성',
       '.closing-title': '다음 세대의 모빌리티 경험을<br>함께 만들어 볼까요?',
       '.closing-desc': '자동차 인테리어 콘셉트, CMF 개발, 차세대 HMI 인터랙션 협업을 환영합니다.',
-      '#btn-footer-contact span': '대화 시작하기'
+      '#btn-footer-contact span': '대화 시작하기',
+      '.footer-inner > div:first-child': '<strong>GENESIS × YURI LEE</strong> · 자동차 인테리어 아키텍처 & CMF',
+      '.footer-inner > div:last-child': '© 2026 Yuri Lee. 모든 권리 보유.'
     };
 
     const englishCopy = {};
@@ -1279,30 +1293,32 @@
     };
 
     function setLanguage(language) {
-      currentLanguage = language;
-      document.documentElement.lang = language;
-      const copy = language === 'ko' ? koreanCopy : englishCopy;
+      const selectedLanguage = language === 'ko' ? 'ko' : 'en';
+      currentLanguage = selectedLanguage;
+      document.documentElement.lang = selectedLanguage;
+      const copy = selectedLanguage === 'ko' ? koreanCopy : englishCopy;
       Object.entries(copy).forEach(([selector, html]) => {
         const element = document.querySelector(selector);
         if (element) element.innerHTML = html;
       });
       document.querySelectorAll('.nav-links a').forEach((link, index) => {
-        link.textContent = navCopy[language][index];
+        link.textContent = navCopy[selectedLanguage][index];
       });
       document.querySelectorAll('.language-option').forEach((option) => {
-        const isActive = option.dataset.language === language;
+        const isActive = option.getAttribute('data-language') === selectedLanguage;
         option.classList.toggle('is-active', isActive);
         option.setAttribute('aria-pressed', String(isActive));
       });
-      document.getElementById('btn-nav-contact').textContent = language === 'ko' ? '상담 문의' : 'Consultation';
-      localStorage.setItem('yuri-language', language);
+      document.getElementById('btn-nav-contact').textContent = selectedLanguage === 'ko' ? '상담 문의' : 'Consultation';
+      localStorage.setItem('yuri-language', selectedLanguage);
+      modeDetail.textContent = driveModes[modeIndex][selectedLanguage];
     }
 
     document.querySelectorAll('.language-option').forEach((option) => {
-      option.addEventListener('click', () => setLanguage(option.dataset.language));
+      option.addEventListener('click', () => {
+        setLanguage(option.getAttribute('data-language'));
+      });
     });
-
-    setLanguage(currentLanguage);
 
     // 1. 토스트 알림 함수
     const toast = document.getElementById('toast');
@@ -1327,7 +1343,9 @@
         const name = btn.getAttribute('data-name');
         
         viewport.style.setProperty('--active-ambient', color);
-        showToast(`Ambient lighting changed to ${name}.`);
+        showToast(currentLanguage === 'ko'
+          ? `앰비언트 조명이 ${name}(으)로 변경되었습니다.`
+          : `Ambient lighting changed to ${name}.`);
       });
     });
 
@@ -1337,26 +1355,34 @@
     const modeDetail = document.getElementById('mode-detail');
 
     const driveModes = [
-      { name: 'CHAUFFEUR MODE', desc: 'A private lounge setting designed for rest and spacious comfort' },
-      { name: 'DYNAMIC SPORT MODE', desc: 'A driver-focused interface with precise instruments and responsive haptics' },
-      { name: 'AUTONOMOUS LOUNGE', desc: 'A calm autonomous setting with a retracting wheel and rotating seats' }
+      { name: 'CHAUFFEUR MODE', en: 'A private lounge setting designed for rest and spacious comfort', ko: '휴식과 여유로운 공간을 위한 프라이빗 라운지 모드' },
+      { name: 'DYNAMIC SPORT MODE', en: 'A driver-focused interface with precise instruments and responsive haptics', ko: '정밀한 계기와 빠른 햅틱 반응을 제공하는 운전자 중심 모드' },
+      { name: 'AUTONOMOUS LOUNGE', en: 'A calm autonomous setting with a retracting wheel and rotating seats', ko: '수납형 스티어링 휠과 회전 시트가 만드는 자율주행 라운지 모드' }
     ];
     let modeIndex = 0;
+
+    setLanguage(currentLanguage);
 
     sphereBtn.addEventListener('click', () => {
       modeIndex = (modeIndex + 1) % driveModes.length;
       modeName.textContent = driveModes[modeIndex].name;
-      modeDetail.textContent = driveModes[modeIndex].desc;
-      showToast(`Driving mode changed to ${driveModes[modeIndex].name}.`);
+      modeDetail.textContent = driveModes[modeIndex][currentLanguage];
+      showToast(currentLanguage === 'ko'
+        ? `주행 모드가 ${driveModes[modeIndex].name}(으)로 변경되었습니다.`
+        : `Driving mode changed to ${driveModes[modeIndex].name}.`);
     });
 
     // 4. 문의 버튼 액션
     document.getElementById('btn-nav-contact').addEventListener('click', () => {
-      showToast('Contact Yuri Lee for an interior design consultation.');
+      showToast(currentLanguage === 'ko'
+        ? '인테리어 디자인 상담을 위해 이유리에게 연락해 주세요.'
+        : 'Contact Yuri Lee for an interior design consultation.');
     });
 
     document.getElementById('btn-footer-contact').addEventListener('click', () => {
-      showToast('Thank you for your interest in collaborating with Yuri Lee.');
+      showToast(currentLanguage === 'ko'
+        ? '이유리와의 협업에 관심을 가져주셔서 감사합니다.'
+        : 'Thank you for your interest in collaborating with Yuri Lee.');
     });
 
     // Ordered section entrance motion
