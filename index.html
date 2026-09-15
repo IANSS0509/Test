@@ -884,6 +884,24 @@
       .metal-cursor,.metal-cursor-dot { display: none; }
       body.has-metal-cursor,body.has-metal-cursor a,body.has-metal-cursor button,body.has-metal-cursor .sphere-avatar { cursor: auto; }
     }
+
+    .language-toggle {
+      min-width: 58px;
+      height: 38px;
+      margin-left: 10px;
+      border: 1px solid #d8dce1;
+      border-radius: 12px;
+      background: rgba(255,255,255,.76);
+      color: #30353c;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: background .25s ease, border-color .25s ease, transform .25s ease;
+    }
+    .language-toggle:hover { background:#eef0f2; border-color:#aeb4bc; transform:translateY(-1px); }
+    .nav-actions { display:flex; align-items:center; }
+    @media(max-width:560px){.btn-contact-nav{display:none}.language-toggle{margin-left:0}}
   </style>
 </head>
 <body>
@@ -912,7 +930,10 @@
         </ul>
       </nav>
 
-      <button class="btn-contact-nav" id="btn-nav-contact">Consultation</button>
+      <div class="nav-actions">
+        <button class="btn-contact-nav" id="btn-nav-contact">Consultation</button>
+        <button class="language-toggle" id="language-toggle" type="button" aria-label="한국어로 변경">KR</button>
+      </div>
     </div>
   </header>
 
@@ -1189,6 +1210,79 @@
   </div>
 
   <script>
+    let currentLanguage = localStorage.getItem('yuri-language') || 'en';
+
+    const koreanCopy = {
+      '.hero-badge > span:last-child': '제네시스 인테리어 철학',
+      '.hero h1': '공간을 넘어 감정을<br>디자인합니다. <span class="highlight-copper">이유리</span>',
+      '.hero-lead': '한국 고유의 <strong>여백의 미</strong>와 첨단 모빌리티 기술이 만나는 지점.<br>복잡함을 덜어내고 차분하며 직관적인 사용자 경험을 설계합니다.',
+      '.hero-sub': '콕핏은 더 이상 이동만을 위한 공간이 아닙니다.<br>편안함과 사색, 영감을 위한 프라이빗 라운지가 될 수 있습니다.',
+      '.hero-buttons .btn-genesis-solid span': '콕핏 살펴보기',
+      '.hero-buttons .btn-genesis-outline': '디자인 철학 읽기',
+      '#philosophy .section-eyebrow': '01 / 디자인 철학',
+      '#philosophy .section-title': '여백의 미와<br>하이테크의 균형.',
+      '#philosophy .section-intro': '화려한 장식으로 시선을 끌기보다,<br>절제에서 오는 차분함으로 인테리어를 시작합니다.',
+      '.quote-lead': '“진정한 럭셔리는 기술을 요란하게 드러내지 않습니다.<br>손길과 시선이 닿는 모든 순간에 스며든 세심함입니다.”',
+      '.quote-body': '낮고 수평적인 구조와 섬세한 앰비언트 조명으로<br>운전자와 탑승자 모두에게 개방감과 편안함을 제공합니다.',
+      '.pillar-item:nth-child(1) .pillar-title': '수평적 공간과 절제',
+      '.pillar-item:nth-child(1) .pillar-desc': '슬림한 송풍구와 최소화된 디스플레이 베젤로 시각적 긴장을 줄여 실내를 더 넓고 고요하게 만듭니다.',
+      '.pillar-item:nth-child(2) .pillar-title': '크리스탈 스피어와 감성적 인터랙션',
+      '.pillar-item:nth-child(2) .pillar-desc': '정지 상태에서는 조형물이 되고 주행 중에는 직관적인 컨트롤러로 전환되어 촉각과 감성을 연결합니다.',
+      '.pillar-item:nth-child(3) .pillar-title': '자연에서 영감을 받은 지속 가능한 럭셔리',
+      '.pillar-item:nth-child(3) .pillar-desc': '올리브유 가공 나파 가죽과 유칼립투스 우드, 재생 한지 소재로 모든 접점에 자연스러운 깊이를 더합니다.',
+      '#cockpit .section-eyebrow': '02 / 미래형 콕핏',
+      '#cockpit .section-title': '차세대 콕핏 아키텍처.',
+      '#cockpit .section-intro': '주행 모드와 상황, 탑승자의 감정에 자연스럽게 반응하는 미래형 실내를 경험해 보세요.',
+      '.cockpit-toolbar p': '앰비언트 조명을 선택해 실시간으로 콕핏의 분위기를 바꿔보세요.',
+      '#projects .section-eyebrow': '03 / 주요 프로젝트',
+      '#projects .section-title': '이유리의 인테리어 디자인 프로젝트.',
+      '#projects .section-intro': '일상의 모빌리티에 의미 있는 감성을 더하는 미래형 콘셉트와 CMF 연구입니다.',
+      '.project-card:nth-child(1) .card-title': '네오룬 라운지 콕핏 아키텍처',
+      '.project-card:nth-child(1) .card-text': 'B필러가 없는 코치 도어와 180도 회전 시트로 한국 건축에서 영감을 받은 따뜻한 환대의 공간을 완성했습니다.',
+      '.project-card:nth-child(2) .card-title': '크리스탈 햅틱 인터페이스',
+      '.project-card:nth-child(2) .card-text': '운전자의 시선을 빼앗지 않고도 정확하게 조작할 수 있는 크리스탈 컨트롤러와 촉각 피드백 시스템입니다.',
+      '.project-card:nth-child(3) .card-title': '지속 가능한 천연 소재 연구',
+      '.project-card:nth-child(3) .card-text': '천연 가공 나파 가죽과 책임감 있게 조달한 우드를 결합해 섬세한 촉각적 깊이를 연구했습니다.',
+      '.closing-title': '다음 세대의 모빌리티 경험을<br>함께 만들어 볼까요?',
+      '.closing-desc': '자동차 인테리어 콘셉트, CMF 개발, 차세대 HMI 인터랙션 협업을 환영합니다.',
+      '#btn-footer-contact span': '대화 시작하기'
+    };
+
+    const englishCopy = {};
+    Object.keys(koreanCopy).forEach((selector) => {
+      const element = document.querySelector(selector);
+      if (element) englishCopy[selector] = element.innerHTML;
+    });
+
+    const navCopy = {
+      en: ['Philosophy','Future Cockpit','Selected Work','Contact'],
+      ko: ['디자인 철학','미래형 콕핏','주요 프로젝트','연락하기']
+    };
+
+    function setLanguage(language) {
+      currentLanguage = language;
+      document.documentElement.lang = language;
+      const copy = language === 'ko' ? koreanCopy : englishCopy;
+      Object.entries(copy).forEach(([selector, html]) => {
+        const element = document.querySelector(selector);
+        if (element) element.innerHTML = html;
+      });
+      document.querySelectorAll('.nav-links a').forEach((link, index) => {
+        link.textContent = navCopy[language][index];
+      });
+      const toggle = document.getElementById('language-toggle');
+      toggle.textContent = language === 'en' ? 'KR' : 'EN';
+      toggle.setAttribute('aria-label', language === 'en' ? '한국어로 변경' : 'Switch to English');
+      document.getElementById('btn-nav-contact').textContent = language === 'ko' ? '상담 문의' : 'Consultation';
+      localStorage.setItem('yuri-language', language);
+    }
+
+    document.getElementById('language-toggle').addEventListener('click', () => {
+      setLanguage(currentLanguage === 'en' ? 'ko' : 'en');
+    });
+
+    setLanguage(currentLanguage);
+
     // 1. 토스트 알림 함수
     const toast = document.getElementById('toast');
     let toastTimer;
